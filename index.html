@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>The Vinylmation Station</title>
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+		
+$('#gallery img').each(function(i) {
+	var imgFile = $(this).attr('src');
+	var preloadImage = new Image();
+	preloadImage.src = imgFile.replace('.','_h.');
+		
+	$(this).hover(
+		function() {
+			$(this).attr('src', preloadImage.src);
+		},
+		function () {
+		var currentSource=$(this).attr('src');
+			$(this).attr('src', imgFile);
+	}); // end hover
+}); // end each
+	
+//insert script 7.2 below this line
+	$('#gallery a').click(function(evt) {
+		evt.preventDefault();
+		var imgPath = $(this).attr('href');
+		var oldImage =$('#photo img'); 
+		var newImage = $('<img src="' + imgPath + '">');
+		newImage.hide();
+		$('#photo').prepend(newImage);
+		newImage.fadeIn(0);
+		oldImage.fadeOut(0,function(){
+			$(this).remove();
+									   });
+	}); // end click
+	$('#gallery a:first').click();
+}); // end ready
+</script>
+</head>
+
+<body>
+<div id="container">
+	
+    	<div id="header">
+        <img src="images/logo.png" alt="logo"  />
+        
+        
+        </div><!-- end of header -->
+		
+        <div id="content">
+        <div id="left">
+        <p class="headline">Home</p>
+        <p class="bodycopy">The Vinylmation Station is the place for all your vinylmation needs. We have up to date information on each of the vinylmation series and we tell you everything we know about any of the upcoming and special series.  </p>
+        <p class="bodycopy2">We know you are big fans of Disney's latest collectable trend and we are glad to give you a place where you can discover about special Disney signing events, trading events, or even give you a sneak peek about what artists are working on.</p>
+        </div><!-- end of left -->
+        <div id="right">
+        <p class="headline">Featured Vinylmation</p>
+        <div id="gallery">
+         <div id="photo">
+ 
+ 		</div>
+        <div id="caption">
+        <p>Name: Woody</p>
+        <p>Series: Toy Story </p>
+        <p>Size: 3-inch</p>
+        <p>Artists: Thomas Scott</p>
+        <p>Description: <p>Woody is Andy's favorite toy and truest pal from the Toy Story movie series.</p></p></div>
+      
+        <a href="images/large/btn1.jpg"><img src="images/small/btn1.jpg" width="60" height="55" alt="btn1"></a>
+        <a href="images/large/btn2.jpg"><img src="images/small/btn2.jpg" width="60" height="55" alt="btn2"></a>
+        <a href="images/large/btn3.jpg"><img src="images/small/btn3.jpg" width="60" height="55" alt="btn3"></a>
+        <a href="images/large/btn4.jpg"><img src="images/small/btn4.jpg" width="60" height="55" alt="btn4"></a>
+        <a href="images/large/btn5.jpg"><img src="images/small/btn5.jpg" width="60" height="55" alt="btn5"></a>
+    
+      	</div>
+       
+        </div>
+        </div><!-- end of content -->
+        
+        <div id="nav">
+        <ul>
+        	<li><a href="index.html">home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="news.html">news</a></li>
+            <li><a href="series.html">series</a></li>
+            <li><a href="buy.html">buy</a></li>
+        </ul>
+        </div><!-- end of nav -->
+
+</div> <!-- end of container -->
+</body>
+</html>
